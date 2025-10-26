@@ -1,203 +1,224 @@
 # 🚀 Hybrid ATS System
 
-A **Hybrid Applicant Tracking System (ATS)** that simplifies recruitment workflows for **Applicants, Admins, and Automated Bots**.
-This project is built with a **MERN Stack (MongoDB, Express.js, React.js, Node.js)** and designed for modular scalability, real-time tracking, and secure role-based access.
+A **full-stack MERN-based Applicant Tracking System (ATS)** designed to simplify hiring, role tracking, and candidate management.  
+It allows:
+- 👨‍💼 **Applicants** to apply for jobs, upload resumes, and track application statuses.
+- 👩‍💻 **Admins** to manage job posts, review applications, update progress, and monitor metrics.
+- 🤖 **Bot (Mimic)** role to automate screening and log activities.
 
 ---
 
-## 🧩 Project Structure
+## 🧩 Tech Stack
+
+**Frontend**
+- React.js (with Hooks and Router)
+- Context API (Authentication)
+- Axios for API communication
+
+**Backend**
+- Node.js & Express.js
+- MongoDB & Mongoose ORM
+- JWT Authentication
+- dotenv for environment configuration
+- Swagger for API documentation
+
+---
+
+## 📁 Project Structure
 
 ```
 hybrid-ats-system/
-├── backend/                    
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── services/
-│   ├── utils/
-│   ├── server.js
-│   ├── swagger.js
-│   └── package.json
+├── backend/
+│ ├── config/
+│ │ └── db.js
+│ ├── controllers/
+│ │ ├── applicationController.js
+│ │ ├── adminController.js
+│ │ ├── jobController.js
+│ ├── middleware/
+│ │ ├── authMiddleware.js
+│ │ └── errorHandler.js
+│ ├── models/
+│ │ ├── Application.js
+│ │ ├── JobPosting.js
+│ │ ├── User.js
+│ ├── routes/
+│ │ ├── applicationRoutes.js
+│ │ ├── adminRoutes.js
+│ │ ├── jobRoutes.js
+│ ├── utils/
+│ │ ├── validators.js
+│ │ └── logger.js
+│ ├── scripts/
+│ │ └── seedData.js
+│ └── server.js
 │
-└── frontend/                   
-    ├── public/
-    │   └── index.html
-    ├── src/
-    │   ├── components/
-    │   │   ├── auth/           (Login, Register)
-    │   │   ├── applicant/      (Dashboard, JobList, MyApplications)
-    │   │   ├── admin/          (Dashboard, ApplicationManager, JobPostingManager, MetricsView)
-    │   │   ├── bot/            (Dashboard, TechnicalApps, AutomationLogs)
-    │   │   └── common/         (Navbar, ProtectedRoute, Loader)
-    │   ├── context/
-    │   │   └── AuthContext.jsx
-    │   ├── services/
-    │   │   ├── api.js
-    │   │   ├── authService.js
-    │   │   ├── applicationService.js
-    │   │   ├── adminService.js
-    │   │   ├── botService.js
-    │   │   └── jobService.js
-    │   ├── utils/
-    │   │   ├── constants.js
-    │   │   └── helpers.js
-    │   ├── App.jsx
-    │   ├── App.css
-    │   ├── index.js
-    │   └── index.css
-    ├── .env
-    └── package.json
-
+└── frontend/
+├── src/
+│ ├── components/
+│ │ ├── admin/
+│ │ │ ├── ApplicationManager.jsx
+│ │ │ ├── JobPostingManager.jsx
+│ │ │ ├── MetricsView.jsx
+│ │ ├── applicant/
+│ │ │ ├── JobList.jsx
+│ │ │ ├── MyApplications.jsx
+│ │ ├── common/
+│ │ │ ├── Navbar.jsx
+│ │ │ ├── Loader.jsx
+│ │ ├── auth/
+│ ├── services/
+│ │ ├── adminService.js
+│ │ ├── applicationService.js
+│ │ ├── jobService.js
+│ ├── context/
+│ │ └── AuthContext.jsx
+│ ├── utils/
+│ │ ├── constants.js
+│ │ └── helpers.js
 ```
+
 
 ---
 
-## 🛠️ Tech Stack
+## ⚙️ Setup Instructions
 
-- **Frontend:** React.js, React Router, Axios, Context API, TailwindCSS/CSS Modules
-- **Backend:** Node.js, Express.js, MongoDB Atlas, JWT Authentication, CORS, dotenv, Swagger
-- **Deployment:** Render (Backend), Vercel/Netlify (Frontend)
+### 1️⃣ Environment Setup
 
----
+#### Backend `.env`
 
-## ⚙️ Environment Variables
+- PORT=5000
+- NODE_ENV=development
+- MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/retryWrites=true&w=majority
+- JWT_SECRET=your_secret_key
+- JWT_EXPIRE=7d
+- CORS_ORIGIN=* (For development only)
 
-**Backend `.env`**
-
-```
-PORT=8080
-NODE_ENV=production
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_super_secret_jwt_key
-JWT_EXPIRE=7d
-CORS_ORIGIN=*
-```
-
-**Frontend `.env`**
-
-```
-REACT_APP_API_URL=https://your-backend.onrender.com
-```
 
 ---
 
-## 🏗️ Installation & Setup
+### 2️⃣ Install Dependencies
 
-### 1️⃣ Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/hybrid-ats-system.git
-cd hybrid-ats-system
-```
-
-### 2️⃣ Setup Backend
-
-```bash
+Backend dependencies
 cd backend
 npm install
-```
 
-Create `.env` and add backend environment variables.
-Run backend locally:
-
-```bash
-npm start
-```
-
-### 3️⃣ Setup Frontend
-
-```bash
+Frontend dependencies
 cd ../frontend
 npm install
-```
 
-Create `.env` with frontend API URL.
-Run frontend locally:
 
-```bash
+---
+
+### 3️⃣ Start the Application
+
+Start backend
+cd backend
+npm run dev
+
+Start frontend
+cd ../frontend
 npm start
-```
 
 ---
 
-## 🌐 Deployment
+## 🧠 Seeding the Database
 
-**Backend (Render):**
-
-* Connect GitHub repo
-* Set environment variables
-* Build Command: `npm install`
-* Start Command: `npm start`
-
-**Frontend (Vercel / Netlify):**
-
-* Add backend API URL in `.env`:
-
-```
-REACT_APP_API_URL=https://hybrid-ats-backend.onrender.com
-```
-
----
-
-## 📘 API Documentation
-
-Swagger is integrated.
-Access docs locally:
-
-```
-http://localhost:8080/api-docs
-```
-
-Or on deployed backend:
+To insert sample users and job postings:
+cd backend
+node scripts/seedData.js
 
 
-https://application-tracking-system-1-tdrv.onrender.com/api-docs
+✅ This creates:
+- Admin: `admin@test.com / password123`
+- Applicant: `applicant@test.com / password123`
+- Bot: `bot@test.com / password123`
+
+If `.env` is outside `scripts/`, add this to the top of your seed script:
+
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+
 
 
 ---
 
-## 🧪 Testing
+## 🌐 API Endpoints Overview
 
-Backend tests:
-
-```bash
-npm test
-```
-
-Frontend tests:
-
-```bash
-npm run test
-```
+### **Applicant Routes**
+| Method | Endpoint | Description |
+|--------|-----------|-------------|
+| POST | `/api/applications` | Submit a new job application |
+| GET | `/api/applications` | Get all applications (user-specific) |
+| GET | `/api/applications/:id` | Fetch application by ID |
+| GET | `/api/applications/:id/history` | Get application status history |
 
 ---
 
-## 📊 Future Enhancements
-
-* AI-based resume screening
-* Email & SMS notifications
-* Real-time WebSocket updates
-* Advanced role-based access control
-
----
-
-## 🤝 Contributing
-
-1. Fork the repo
-2. Create a branch (`git checkout -b feature/YourFeature`)
-3. Commit your changes (`git commit -m 'Add some feature'`)
-4. Push (`git push origin feature/YourFeature`)
-5. Open a Pull Request
+### **Admin Routes**
+| Method | Endpoint | Description |
+|--------|-----------|-------------|
+| PUT | `/api/admin/applications/:id/status` | Update job application status |
+| POST | `/api/admin/applications/:id/comment` | Add comment to an application |
+| GET | `/api/admin/metrics` | Get admin dashboard metrics |
 
 ---
 
-## 🧑‍💻 Author
+## 🧪 Sample JSON Requests
 
-**Sridhar M**
+#### Create Application  
+
+{
+"jobPostingId": "672f8de9e11f1cb1f5f661b4",
+"resume": "resume_link_here",
+"contactInfo": {
+"email": "applicant@test.com",
+"phone": "1234567890"
+}
+}
+
+
+#### Update Application Status (Admin)  
+{
+"status": "Offer",
+"comment": "Shortlisted for interview"
+}
 
 
 ---
+
+## 🧰 Features Overview
+
+- Secure JWT-based authentication
+- Role-based access control (Applicant, Admin, Bot)
+- Application status tracking with history logs
+- Metrics dashboard for admin analysis
+- Comprehensive job posting CRUD system
+- Validations and error handling middleware
+---
+
+## 🚀 Deployment
+
+- **Frontend:** Render
+- **Backend:** Render
+- **Database:** MongoDB Atlas
+- Link - https://application-tracking-system-2-2hpg.onrender.com/login
+- Swagger API Documentation - https://application-tracking-system-1-tdrv.onrender.com/api-docs/
+
+---
+
+## 📄 License
+
+Licensed under the **MIT License**.
+
+---
+
+## 👨‍💻 Author
+
+**Sridhar**  
+Full Stack Developer 
+
+---
+
 
 
