@@ -15,7 +15,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000',
+        url: 'https://application-tracking-system-1-tdrv.onrender.com',
         description: 'Development server'
       }
     ],
@@ -35,3 +35,4 @@ const options = {
 const swaggerSpec = swaggerJsdoc(options);
 
 module.exports = { swaggerUi, swaggerSpec };
+
