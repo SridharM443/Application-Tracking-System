@@ -1,4 +1,4 @@
-# Hybrid ATS System README
+# Hybrid ATS System
 
 # 🚀 Hybrid ATS System
 
