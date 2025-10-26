@@ -22,7 +22,7 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ 
-  origin: ['http://localhost:3000', 'http://localhost:5000'],
+  origin: ['*'],
   credentials: true 
 }));
 
@@ -59,7 +59,7 @@ app.get('/', (req, res) => {
     success: true,
     message: 'Hybrid ATS API',
     version: '1.0.0',
-    documentation: 'http://localhost:5000/api-docs', // ← Add this
+    documentation: 'https://application-tracking-system-1-tdrv.onrender.com/api-docs/', // ← Add this
     endpoints: {
       health: '/health',
       auth: '/api/auth',
@@ -84,3 +84,4 @@ app.listen(PORT, () => {
   console.log(`🌐 API URL: http://localhost:${PORT}`);
   console.log(`❤️  Health Check: http://localhost:${PORT}/health\n`);
 });
+
