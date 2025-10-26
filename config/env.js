@@ -16,7 +16,7 @@ module.exports = {
   jwtExpire: process.env.JWT_EXPIRE || '7d',
   
   // CORS
-  corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+  corsOrigin: process.env.CORS_ORIGIN || '*',
   
   // Email (Optional - for future use)
   emailHost: process.env.EMAIL_HOST,
@@ -33,3 +33,4 @@ module.exports = {
   maxFileSize: parseInt(process.env.MAX_FILE_SIZE) || 5242880, // 5MB
   allowedFileTypes: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 };
+
