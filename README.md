@@ -1,5 +1,3 @@
-# Hybrid ATS System
-
 # 🚀 Hybrid ATS System
 
 A **Hybrid Applicant Tracking System (ATS)** that simplifies recruitment workflows for **Applicants, Admins, and Automated Bots**.
@@ -154,9 +152,9 @@ http://localhost:8080/api-docs
 
 Or on deployed backend:
 
-```
+
 [https://hybrid-ats-backend.onrender.com/api-docs](https://application-tracking-system-1-tdrv.onrender.com/api-docs)](https://application-tracking-system-1-tdrv.onrender.com/api-docs)
-```
+
 
 ---
 
